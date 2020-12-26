@@ -16,7 +16,8 @@ export class CartPage {
 
   items: CartItem[];
 
-  constructor(public navCtrl: NavController, 
+  constructor(
+    public navCtrl: NavController, 
     public navParams: NavParams, 
     public cartService: CartService, 
     public produtoService: ProdutoService) {
@@ -25,7 +26,7 @@ export class CartPage {
   ionViewDidLoad() {
     let cart = this.cartService.getCart();
     this.items = cart.items;
-    this. loadImageUrls();
+    this.loadImageUrls();
   }
 
   loadImageUrls() {
@@ -37,10 +38,10 @@ export class CartPage {
         },
         error => {});
     }
-  }
+  }  
 
-  removeItem(produdo: ProdutoDTO) {
-    this.items = this.cartService.removeProduto(produdo).items;
+  removeItem(produto: ProdutoDTO) {
+    this.items = this.cartService.removeProduto(produto).items;
   }
 
   increaseQuantity(produto: ProdutoDTO) {
@@ -53,7 +54,7 @@ export class CartPage {
 
   total() : number {
     return this.cartService.total();
-  }
+  }  
 
   goOn() {
     this.navCtrl.setRoot('CategoriasPage');

@@ -17,21 +17,23 @@ export class ProdutoDetailPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
-    public produtoSevice: ProdutoService,
+    public produtoService: ProdutoService,
     public cartService: CartService) {
   }
 
   ionViewDidLoad() {
     let produto_id = this.navParams.get('produto_id');
-    this.produtoSevice.findById(produto_id)
+    this.produtoService.findById(produto_id)
       .subscribe(response => {
         this.item = response;
+        this.getImageUrlIfExists();
+    
       },
       error => {});
   }
 
   getImageUrlIfExists() {
-    this.produtoSevice.getImageFromBucket(this.item.id)
+    this.produtoService.getImageFromBucket(this.item.id)
       .subscribe(response => {
         this.item.imageUrl = `${API_CONFIG.bucketBaseUrl}/prod${this.item.id}.jpg`;
       },

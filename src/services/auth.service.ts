@@ -13,7 +13,10 @@ export class AuthService {
 
     jwtHelper: JwtHelper = new JwtHelper();
 
-    constructor(public http: HttpClient, public storage: StorageService, public cartService: CartService) {
+    constructor(
+        public http: HttpClient, 
+        public storage: StorageService, 
+        public cartService: CartService) {
     }
 
     authenticate(creds : CredenciaisDTO) {

@@ -1,6 +1,6 @@
 export interface ProdutoDTO {
     id : string;
     nome : string;
-    preco : Number;
+    preco : number;
     imageUrl? : string;
 }
