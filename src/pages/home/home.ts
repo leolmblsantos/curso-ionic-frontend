@@ -17,40 +17,39 @@ export class HomePage {
   };
 
   constructor(
-    public navCtrl: NavController,
+    public navCtrl: NavController, 
     public menu: MenuController,
     public auth: AuthService) {
 
   }
 
   ionViewWillEnter() {
-      this.menu.swipeEnable(false);
-    }
-      ionViewDidLeave() {
-      this.menu.swipeEnable(true);
-    }
+    this.menu.swipeEnable(false);
+  }
+    
+  ionViewDidLeave() {
+    this.menu.swipeEnable(true);
+  }
 
   ionViewDidEnter() {
     this.auth.refreshToken()
-    .subscribe(response => {
-      this.auth.successfulLogin(response.headers.get('Authorization'));
-      this.navCtrl.setRoot('CategoriasPage');
-    },
-    error => {});
+      .subscribe(response => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('CategoriasPage');
+      },
+      error => {});  
   }
-  
 
-  login(){
+  login() {
     this.auth.authenticate(this.creds)
-    .subscribe(response => {
-      this.auth.successfulLogin(response.headers.get('Authorization'));
-      this.navCtrl.setRoot('CategoriasPage');
-    },
-    error => {});
+      .subscribe(response => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('CategoriasPage');
+      },
+      error => {});    
   }
-
+ 
   signup() {
-    this.navCtrl.push('SignupPage')
+    this.navCtrl.push('SignupPage');
   }
-
 }

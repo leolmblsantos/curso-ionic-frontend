@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, LoadingController, NavController, NavParams } from 'ionic-angular';
-import { API_CONFIG } from '../../config/api.config';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProdutoDTO } from '../../models/produto.dto';
+import { API_CONFIG } from '../../config/api.config';
 import { ProdutoService } from '../../services/domain/produto.service';
-
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 @IonicPage()
 @Component({
@@ -13,12 +13,11 @@ import { ProdutoService } from '../../services/domain/produto.service';
 export class ProdutosPage {
 
   items : ProdutoDTO[] = [];
-
   page : number = 0;
 
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams, 
+    public navParams: NavParams,
     public produtoService: ProdutoService,
     public loadingCtrl: LoadingController) {
   }
@@ -35,13 +34,14 @@ export class ProdutosPage {
         let start = this.items.length;
         this.items = this.items.concat(response['content']);
         let end = this.items.length - 1;
-        loader.dismiss;
+        loader.dismiss();
         console.log(this.page);
         console.log(this.items);
         this.loadImageUrls(start, end);
       },
-      error => {});
-      loader.dismiss();
+      error => {
+        loader.dismiss();
+      });
   }
 
   loadImageUrls(start: number, end: number) {
@@ -53,16 +53,15 @@ export class ProdutosPage {
         },
         error => {});
     }
-  }
-  
+  }  
+
   showDetail(produto_id : string) {
     this.navCtrl.push('ProdutoDetailPage', {produto_id: produto_id});
   }
 
   presentLoading() {
     let loader = this.loadingCtrl.create({
-      content: "Aguarde...",
-     // duration: 3000 // Neste caso se eu quiser colocar um tempo padrão
+      content: "Aguarde..."
     });
     loader.present();
     return loader;
@@ -72,7 +71,7 @@ export class ProdutosPage {
     this.page = 0;
     this.items = [];
     this.loadData();
-    setInterval(() => {
+    setTimeout(() => {
       refresher.complete();
     }, 1000);
   }

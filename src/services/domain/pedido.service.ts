@@ -3,8 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { API_CONFIG } from "../../config/api.config";
 import { PedidoDTO } from "../../models/pedido.dto";
 
-
-
 @Injectable()
 export class PedidoService {
 

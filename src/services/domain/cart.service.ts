@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
-import { Cart } from "../../models/cart";
-import { ProdutoDTO } from "../../models/produto.dto";
-import { StorageService } from "../storage.service";
+import { Injectable } from '@angular/core';
+import { StorageService } from '../storage.service';
+import { Cart } from '../../models/cart';
+import { ProdutoDTO } from '../../models/produto.dto';
 
 @Injectable()
 export class CartService {
 
-    constructor(public storage: StorageService){
+    constructor(public storage: StorageService) {
     }
 
     createOrClearCart() : Cart {
@@ -74,5 +74,4 @@ export class CartService {
         }
         return sum;
     }
-
 }

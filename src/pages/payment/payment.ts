@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PedidoDTO } from '../../models/pedido.dto';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -21,12 +21,12 @@ export class PaymentPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder) {
 
-      this.pedido = this.navParams.get('pedido');
+    this.pedido = this.navParams.get('pedido');
 
-      this.formGroup = this.formBuilder.group({
-        numeroDeParcelas: [1, Validators.required],
-        "@type": ["pagamentoComBoleto", Validators.required]
-      });
+    this.formGroup = this.formBuilder.group({
+      numeroDeParcelas: [1, Validators.required],
+      "@type": ["pagamentoComCartao", Validators.required]
+    });
   }
 
   nextPage() {

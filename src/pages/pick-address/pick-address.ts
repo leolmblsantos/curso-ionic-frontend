@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EnderecoDTO } from '../../models/endereco.dto';
 import { StorageService } from '../../services/storage.service';
-import { ClienteServece } from '../../services/domain/cliente.service';
+import { ClienteService } from '../../services/domain/cliente.service';
 import { PedidoDTO } from '../../models/pedido.dto';
 import { CartService } from '../../services/domain/cart.service';
-
 
 @IonicPage()
 @Component({
@@ -15,13 +14,14 @@ import { CartService } from '../../services/domain/cart.service';
 export class PickAddressPage {
 
   items: EnderecoDTO[];
+
   pedido: PedidoDTO;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public storage: StorageService,
-    public clienteService: ClienteServece,
+    public clienteService: ClienteService,
     public cartService: CartService) {
   }
 

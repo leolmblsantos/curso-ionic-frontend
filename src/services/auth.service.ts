@@ -7,7 +7,6 @@ import { StorageService } from "./storage.service";
 import { JwtHelper } from 'angular2-jwt';
 import { CartService } from "./domain/cart.service";
 
-
 @Injectable()
 export class AuthService {
 
@@ -15,7 +14,7 @@ export class AuthService {
 
     constructor(
         public http: HttpClient, 
-        public storage: StorageService, 
+        public storage: StorageService,
         public cartService: CartService) {
     }
 

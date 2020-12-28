@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CartItem } from '../../models/cartitem';
-import { ClienteDTO } from '../../models/cliente.dto';
-import { EnderecoDTO } from '../../models/endereco.dto';
 import { PedidoDTO } from '../../models/pedido.dto';
+import { CartItem } from '../../models/cart-item';
+import { EnderecoDTO } from '../../models/endereco.dto';
+import { ClienteDTO } from '../../models/cliente.dto';
+import { ClienteService } from '../../services/domain/cliente.service';
 import { CartService } from '../../services/domain/cart.service';
-import { ClienteServece } from '../../services/domain/cliente.service';
 import { PedidoService } from '../../services/domain/pedido.service';
-
 
 @IonicPage()
 @Component({
@@ -16,21 +15,20 @@ import { PedidoService } from '../../services/domain/pedido.service';
 })
 export class OrderConfirmationPage {
 
-
   pedido: PedidoDTO;
   cartItems: CartItem[];
   cliente: ClienteDTO;
   endereco: EnderecoDTO;
-  codPedido: string;
+  codpedido: string;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public clienteService: ClienteService,
     public cartService: CartService,
-    public clienteService: ClienteServece,
     public pedidoService: PedidoService) {
 
-      this.pedido = this.navParams.get('pedido');
+    this.pedido = this.navParams.get('pedido');
   }
 
   ionViewDidLoad() {
@@ -39,9 +37,7 @@ export class OrderConfirmationPage {
     this.clienteService.findById(this.pedido.cliente.id)
       .subscribe(response => {
         this.cliente = response as ClienteDTO;
-       // this.endereco = this.findEndereco(this.pedido.enderecoDeEntrega.id, response['enderecos']);
-       this.endereco = this.findEndereco(this.pedido.enderecoDeEntrega.id, response['enderecos']);
-
+        this.endereco = this.findEndereco(this.pedido.enderecoDeEntrega.id, response['enderecos']);
       },
       error => {
         this.navCtrl.setRoot('HomePage');
@@ -57,19 +53,6 @@ export class OrderConfirmationPage {
     return this.cartService.total();
   } 
 
-  checkout() {
-    this.pedidoService.insert(this.pedido)
-      .subscribe(response => {
-        this.cartService.createOrClearCart();
-        this.codPedido = this.extractId(response.headers.get('location'));
-      },
-      error => {
-        if (error.status == 403) {
-          this.navCtrl.setRoot('HomePage');
-        }
-      });
-  }
-
   back() {
     this.navCtrl.setRoot('CartPage');
   }
@@ -78,9 +61,21 @@ export class OrderConfirmationPage {
     this.navCtrl.setRoot('CategoriasPage');
   }
 
+  checkout() {
+    this.pedidoService.insert(this.pedido)
+      .subscribe(response => {
+        this.cartService.createOrClearCart();
+        this.codpedido = this.extractId(response.headers.get('location'));
+      },
+      error => {
+        if (error.status == 403) {
+          this.navCtrl.setRoot('HomePage');
+        }
+      });
+  }
+
   private extractId(location : string) : string {
     let position = location.lastIndexOf('/');
     return location.substring(position + 1, location.length);
   }
-
 }
