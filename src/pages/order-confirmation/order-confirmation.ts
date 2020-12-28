@@ -39,7 +39,9 @@ export class OrderConfirmationPage {
     this.clienteService.findById(this.pedido.cliente.id)
       .subscribe(response => {
         this.cliente = response as ClienteDTO;
-        this.endereco = this.findEndereco(this.pedido.enderecoDeEntrega.id, response['enderecos']);
+       // this.endereco = this.findEndereco(this.pedido.enderecoDeEntrega.id, response['enderecos']);
+       this.endereco = this.findEndereco(this.pedido.enderecoDeEntrega.id, response['enderecos']);
+
       },
       error => {
         this.navCtrl.setRoot('HomePage');
