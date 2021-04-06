@@ -1,13 +1,35 @@
 <ion-header>
+  
   <ion-navbar>
+    <title>Produtos</title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Categorias</ion-title>
+    
+    
+    <ion-fab top right style="margin-left: 2px;" >
+      <button navPush="Camara" ion-fab mini><ion-icon name="barcode"></ion-icon></button>
+    </ion-fab>
+  <!--  <ion-title>Categorias</ion-title> -->
+   <form>
+
+     <ion-searchbar style="margin-left: 2%; width: 80%;margin-top: 10px;"  class="form-contrl" placeholder="Buscar" type="text">Buscar</ion-searchbar>
+     <ion-list>
+       <!--
+         <ion-item *ngFor="let item of items">
+           {{ item }}
+          </ion-item>
+        -->
+      </ion-list>
+     
+    </form>
+    
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
+  
   <ion-fab top right edge>
     <button navPush="CartPage" ion-fab mini><ion-icon name="cart"></ion-icon></button>
   </ion-fab>

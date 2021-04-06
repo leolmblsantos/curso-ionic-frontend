@@ -16,6 +16,9 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
 import { ProdutoService } from '../services/domain/produto.service';
 import { CartService } from '../services/domain/cart.service';
 import { ImageUtilService } from '../services/image-util.service';
+import { IntroPageModule } from '../pages/intro/intro.module';
+import { MoovieProvider } from '../providers/moovie/moovie';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { ImageUtilService } from '../services/image-util.service';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IntroPageModule
+  
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +47,8 @@ import { ImageUtilService } from '../services/image-util.service';
     ClienteService,
     ProdutoService,
     CartService,
-    ImageUtilService
+    ImageUtilService,
+    MoovieProvider
   ]
 })
 export class AppModule {}

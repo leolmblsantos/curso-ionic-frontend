@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-fab top right >
+      <button navPush="Camara" ion-fab mini><ion-icon name="barcode"></ion-icon></button>
+    </ion-fab>
+  <!--  <ion-title>Categorias</ion-title> -->
+   <form>
+
+     <ion-searchbar style="margin-left: 2%; width: 80%;margin-top: 10px;"  class="form-contrl" placeholder="Buscar" type="text">Buscar</ion-searchbar>
+     <ion-list>
+       <!--
+         <ion-item *ngFor="let item of items">
+           {{ item }}
+          </ion-item>
+        -->
+      </ion-list>
+     
+    </form>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  
+  
+  
+  <ion-slides [pager]="true"  [autoplay]="3000">
+    <ion-slide>
+      <img src="assets/imgs/slide2.png" alt="">
+    </ion-slide>
+    <ion-slide >
+      <img src="assets/imgs/slide1.png" alt="">
+    </ion-slide>
+    <ion-slide >
+      <img src="assets/imgs/slide9.png" alt="">
+    </ion-slide>
+    <ion-slide >
+      <img src="assets/imgs/slide5.png" alt="">
+    </ion-slide>
+    <ion-slide >
+      <img src="assets/imgs/slide7.png" alt="">
+    </ion-slide>
+    <ion-slide >
+      <img src="assets/imgs/slide6.png" alt="">
+    </ion-slide>
+    <ion-slide >
+      <img src="assets/imgs/slide10.png" alt="">
+    </ion-slide>
+
+<!--
+
+  <ion-slides autoplay="5000" loop="true" speed="500" class="slides" pager="true">
+    <ion-slide *ngFor="let item of items">
+      <img [src]="item?.imageUrl || 'assets/imgs/prod.jpg'"/>
+      <img src="{{Image.URL}}" alt="Product Image">
+    </ion-slide>
+  -->
+    
+  </ion-slides>
+
+
+
+
+  <h3 style="color: red; margin-top: 200px; margin-left: 40px;"></h3>
+  <img src="assets/imgs/tela-inicial.jpeg" alt="logo">
+</ion-content>

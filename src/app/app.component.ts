@@ -10,7 +10,8 @@ import { AuthService } from '../services/auth.service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: string = 'HomePage';
+ // rootPage: string = 'HomePage';
+  rootPage: string = 'InicioPage';
 
   pages: Array<{title: string, component: string}>;
 
@@ -23,10 +24,14 @@ export class MyApp {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
+    
     this.pages = [
-      { title: 'Profile', component: 'ProfilePage' },
-      { title: 'Categorias', component: 'CategoriasPage' },
-      { title: 'Carrinho', component: 'CartPage'},
+      { title: 'Inicio', component: 'InicioPage' },
+      { title: 'Perfil', component: 'ProfilePage' },
+   //   { title: 'Categorias', component: 'CategoriasPage' },
+      { title: 'Produtos', component: 'ProdutosPage' },
+      { title: 'Meu Carrinho', component: 'CartPage'},
+      { title: 'Entrar', component: 'HomePage'},
       { title: 'Logout', component: ''}
     ];
 

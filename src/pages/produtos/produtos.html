@@ -3,7 +3,24 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Produtos</ion-title>
+  <!--  <ion-title>Produtos</ion-title> -->
+  <ion-fab top right >
+    <button navPush="Camara" ion-fab mini><ion-icon name="barcode"></ion-icon></button>
+  </ion-fab>
+
+    <form style="width: 80%;">
+      
+      <ion-searchbar style="margin-top: 10px;"  class="form-contrl" placeholder="Buscar" type="text">Buscar</ion-searchbar>
+        <ion-list>
+        <!--
+
+        <ion-item *ngFor="let item of items">
+          {{ item }}
+        </ion-item>
+      -->
+      </ion-list>
+      
+    </form>
   </ion-navbar>
 </ion-header>
 
